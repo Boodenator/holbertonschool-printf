@@ -1,13 +1,14 @@
-#include <stdarg.h>
-#include <unistd.h>
+#include "main.h"
 
 /**
  * print_number - Writes an integer to stdout
  * @n: The integer to print
  * Return: Number of characters printed
  */
-int print_number(int n)
+
+int print_integer(va_list args)
 {
+    int n = va_arg(args, int);
     int count = 0;
     char buffer[12];
     int i = 0;
@@ -25,10 +26,7 @@ int print_number(int n)
     }
 
     if (num == 0)
-    {
-        write(1, "0", 1);
-        return count + 1;
-    }
+        buffer[i++] = '0';
 
     while (num > 0)
     {
