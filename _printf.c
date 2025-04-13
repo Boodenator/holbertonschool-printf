@@ -1,8 +1,21 @@
 #include "main.h"
 
 /**
+ * flush_buffer - Writes buffer content to stdout
+ * @buffer: The buffer to write
+ * @length: Number of characters in the buffer
+ * Return: Number of characters written
+ */
+int flush_buffer(char *buffer, int length)
+{
+	write(1, buffer, length);
+	return length;
+}
+
+/**
  * _printf - Produces output according to a format
  * @format: A character string containing format specifiers
+ * @buf: is the buffer index
  *
  * Return: Number of characters printed (excluding the null byte)
  */
@@ -10,7 +23,8 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-    	int i = 0, count = 0;
+    	int i = 0, count = 0, buf = 0;
+	char buffer[BUFFER_SIZE];
 
     if (!format)
         return (-1);
@@ -21,8 +35,12 @@ int _printf(const char *format, ...)
     {
         if (format[i] != '%')
         {
-            write(1, &format[i], 1);
-            count++;
+		buffer[buf++] = format[i];
+		if (buf == BUFFER_SIZE)
+		{
+			count += 
+            //write(1, &format[i], 1);
+            //count++;
         }
         else
         {
