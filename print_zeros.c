@@ -12,5 +12,22 @@
 
 int print_zeros(va_list args, int width, char pad)
 {
-	 int num = va_arg(args, int), count = 0, len = 0, negative = 0;
+	 int num = va_arg(args, int), count = 0, len = 0, neg = 0;
+ 	char buf[20];
+	if (num < 0 )
+	{
+		neg = 1;
+		num = -num;
+	}
+	else
+	{
+		num = num;
+	}
+
+
+
+
+
+
+
 
