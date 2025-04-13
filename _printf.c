@@ -17,7 +17,7 @@ int flush_buffer(char *buffer, int length)
  * @format: A character string containing format specifiers
  * @buf: is the buffer index
  *
- * Return: Number of characters printed (excluding the null byte)
+ * Return: Number of characters printed without null byte
  */
 
 int _printf(const char *format, ...)
@@ -38,15 +38,23 @@ int _printf(const char *format, ...)
 		buffer[buf++] = format[i];
 		if (buf == BUFFER_SIZE)
 		{
-			count += 
-            //write(1, &format[i], 1);
-            //count++;
-        }
+			count += flush_buffer(buffer, buf);
+			buf = 0;
+		}
+   }
         else
         {
             i++;
             if (!format[i])
                 return (-1);
+
+	    /* buffer */
+	    if (buf > 0)
+	    {
+		    count += flush_buffer(buffer, buf);
+		    buf = 0;
+	    }
+
             if (format[i] == 'c')
                 count += print_char(args);
             else if (format[i] == 's')
@@ -73,6 +81,11 @@ int _printf(const char *format, ...)
             }
         }
         i++;
+    }
+
+    if (buf > 0)
+    {
+	    count += flush_buffer(buffer, buf);
     }
 
     va_end(args);
