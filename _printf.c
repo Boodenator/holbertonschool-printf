@@ -23,7 +23,7 @@ int flush_buffer(char *buffer, int length)
 int _printf(const char *format, ...)
 {
 	va_list args;
-    	int i = 0, count = 0, buf = 0;
+    	int i = 0, count = 0, buf = 0, width = 0;
 	char buffer[BUFFER_SIZE];
 
     if (!format)
@@ -56,10 +56,10 @@ int _printf(const char *format, ...)
 	    }
 /*Monica*/
            if (*format == '0' && *(format + 1) >= '0' && *(format + 1) <= '9')
-{
+	   {
 	format++; /* Move past '0' */
-	int width = 0;
-
+	/*int width = 0;*/
+	   }
 	/* Extract the full width number */
 	while (*format >= '0' && *format <= '9')
 	{
@@ -69,7 +69,7 @@ int _printf(const char *format, ...)
 
 	/* Check next character for conversion specifier */
 	if (*format == 'd' || *format == 'i')
-	}
+	{
 		count += print_zeros(args, width, '0');
 	}
 	else
@@ -115,4 +115,4 @@ int _printf(const char *format, ...)
 
     va_end(args);
     return (count);
-}
+    }
