@@ -54,8 +54,33 @@ int _printf(const char *format, ...)
 		    count += flush_buffer(buffer, buf);
 		    buf = 0;
 	    }
+/*Monica*/
+           if (*format == '0' && *(format + 1) >= '0' && *(format + 1) <= '9')
+{
+	format++; /* Move past '0' */
+	int width = 0;
 
-            if (format[i] == 'c')
+	/* Extract the full width number */
+	while (*format >= '0' && *format <= '9')
+	{
+		width = width * 10 + (*format - '0');
+		format++;
+	}
+
+	/* Check next character for conversion specifier */
+	if (*format == 'd' || *format == 'i')
+	}
+		count += print_zeros(args, width, '0');
+	}
+	else
+	{
+		/* Handle unknown format gracefully */
+		write(1, "%", 1);
+		write(1, format, 1);
+		count += 2;
+	}
+/*Monica*/
+	    if (format[i] == 'c')
                 count += print_char(args);
             else if (format[i] == 's')
                 count += print_string(args);

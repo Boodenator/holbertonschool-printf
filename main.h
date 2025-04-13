@@ -20,4 +20,6 @@ int print_hex(va_list args);
 int print_HEX(va_list args);
 
 int flush_buffer(char *buffer, int length);
+int print_zeros(va_list args, int width, char pad);
+
 #endif
