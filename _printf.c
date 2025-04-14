@@ -98,6 +98,8 @@ int _printf(const char *format, ...)
 		count += print_hex(args);
 	    else if (format[i] == 'X')
 		count += print_HEX(args);
+	    else if (format[i] == 'r')
+		    count += print_reverse(args);
             else
             {
                 write(1, "%", 1);
