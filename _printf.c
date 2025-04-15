@@ -24,6 +24,7 @@ int _printf(const char *format, ...)
 {
 	va_list args;
     	int i = 0, count = 0, buf = 0, width = 0;
+		char flag = '\0';
 	char buffer[BUFFER_SIZE];
 
     if (!format)
@@ -54,6 +55,13 @@ int _printf(const char *format, ...)
 		    count += flush_buffer(buffer, buf);
 		    buf = 0;
 	    }
+
+				    /* Check for flags or symbols */
+    if (format[i] == '+' || format[i] == ' ' || format[i] == '#')
+    {
+        flag = format[i];
+        i++;
+	}
 /*Monica*/
            if (*format == '0' && *(format + 1) >= '0' && *(format + 1) <= '9')
 	   {
