@@ -19,6 +19,7 @@ int print_octal(va_list args);
 int print_hex(va_list args);
 int print_HEX(va_list args);
 int print_reverse(va_list args);
+int print_symbol(va_list args, char flag);
 
 int flush_buffer(char *buffer, int length);
 int print_zeros(va_list args, int width, char pad);
