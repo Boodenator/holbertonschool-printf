@@ -95,7 +95,7 @@ int _printf(const char *format, ...)
             else if (format[i] == '%')
                 count += print_percent();
             else if (format[i] == 'd' || format[i] == 'i')
-                count += print_integer(args);
+                count += print_integer(args, flag);
 	    else if (format[i] == 'b')
 		    count += print_binary(args);
 	    else if (format[i] == 'u')

@@ -11,7 +11,7 @@ int _printf(const char *format, ...);
 int print_char(va_list args);
 int print_string(va_list args);
 int print_percent(void);
-int print_integer(va_list args);
+int print_integer(va_list args, char flag);
 int print_binary(va_list args);
 
 int print_unsigned(va_list args);
