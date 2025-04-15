@@ -101,11 +101,11 @@ int _printf(const char *format, ...)
 	    else if (format[i] == 'u')
 		count += print_unsigned(args);
 	    else if (format[i] == 'o')
-		count += print_octal(args);
+		count += print_octal(args, flag);
 	    else if (format[i] == 'x')
-		count += print_hex(args);
+		count += print_hex(args, flag);
 	    else if (format[i] == 'X')
-		count += print_HEX(args);
+		count += print_HEX(args, flag);
 	    else if (format[i] == 'r')
 		    count += print_reverse(args);
             else
