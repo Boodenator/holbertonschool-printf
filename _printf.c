@@ -23,7 +23,7 @@ int flush_buffer(char *buffer, int length)
 int _printf(const char *format, ...)
 {
 	va_list args;
-    	int i = 0, count = 0, buf = 0, width = 0;
+    int i = 0, count = 0, buf = 0, width = 0;
 	char buffer[BUFFER_SIZE];
 
     if (!format)
