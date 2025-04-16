@@ -100,6 +100,8 @@ int _printf(const char *format, ...)
 		count += print_HEX(args);
 	    else if (format[i] == 'r')
 		    count += print_reverse(args);
+		else if (format[i] == '+' || format[i] == ' ')
+			count += print_symbol(args, format[i]);
             else
             {
                 write(1, "%", 1);

@@ -22,5 +22,6 @@ int print_reverse(va_list args);
 
 int flush_buffer(char *buffer, int length);
 int print_zeros(va_list args, int width, char pad);
+int print_symbol(va_list args, char flag);
 
 #endif
